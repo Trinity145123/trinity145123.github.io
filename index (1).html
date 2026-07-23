@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ember">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proof I Made It Through — Renee Gibbs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Alex+Brush&display=swap" rel="stylesheet">
+<style>
+  :root, html[data-theme="ember"] {
+    --bg: #14110d;
+    --cream: #f3e9d8;
+    --cream-dim: #cbbfa9;
+    --gold: #d9a552;
+    --gold-bright: #eec078;
+    --ember: #9a3d24;
+    --ember-bright: #c85a34;
+    --line: rgba(217, 165, 82, 0.25);
+    --glow-1: rgba(200, 90, 52, 0.10);
+    --glow-2: rgba(217, 165, 82, 0.08);
+  }
+
+  html[data-theme="jade"] {
+    --bg: #404E3B;
+    --cream: #E6E6E6;
+    --cream-dim: #BAC8B1;
+    --gold: #7B9669;
+    --gold-bright: #BAC8B1;
+    --ember: #6C8480;
+    --ember-bright: #7B9669;
+    --line: rgba(186, 200, 177, 0.25);
+    --glow-1: rgba(108, 132, 128, 0.18);
+    --glow-2: rgba(123, 150, 105, 0.14);
+  }
+
+  html { transition: background 0.3s ease; }
+  body, .title, .poem-title, .trilogy-heading { transition: color 0.3s ease, background 0.3s ease; }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Lora', serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* subtle ember glow texture */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 15% 0%, var(--glow-1), transparent 60%),
+      radial-gradient(ellipse 50% 35% at 90% 100%, var(--glow-2), transparent 60%);
+    transition: background 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; }
+
+  header.hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  .spark {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .spark-flame { stroke: var(--gold-bright); transition: stroke 0.3s ease; }
+  .spark-base { stroke: var(--ember-bright); transition: stroke 0.3s ease; }
+
+  h1.title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    letter-spacing: 0.02em;
+    margin: 0;
+    line-height: 1.05;
+    background: linear-gradient(180deg, var(--gold-bright) 0%, var(--gold) 55%, var(--ember-bright) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+  }
+
+  p.subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+    color: var(--cream-dim);
+    letter-spacing: 0.08em;
+    margin: 1.1rem 0 0;
+  }
+
+  .byline {
+    margin-top: 2.5rem;
+  }
+
+  .byline-label {
+    margin: 0;
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .byline-name {
+    margin: 0.4rem 0 0;
+    font-family: 'Alex Brush', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 400;
+    color: var(--gold-bright);
+    line-height: 1.2;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    opacity: 0.7;
+  }
+
+  section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+    position: relative;
+  }
+
+  section.bio {
+    border-bottom: 1px solid var(--line);
+    max-width: 700px;
+  }
+
+  h2.section-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 1.5rem;
+  }
+
+  .bio p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  nav.toc {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 4rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav.toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    counter-reset: toc-counter;
+  }
+
+  nav.toc li {
+    counter-increment: toc-counter;
+    margin-bottom: 1.3rem;
+    padding-bottom: 1.3rem;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  nav.toc li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  nav.toc a {
+    color: var(--cream);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    transition: color 0.25s ease;
+  }
+
+  nav.toc a:hover { color: var(--gold-bright); }
+
+  nav.toc .num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--ember-bright);
+    font-size: 1.1rem;
+    min-width: 1.6rem;
+  }
+
+  nav.toc .toc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  nav.toc .toc-sub {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    color: var(--cream-dim);
+    margin-top: 0.2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .trilogy {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .trilogy:last-of-type { border-bottom: none; }
+
+  .trilogy-kicker {
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ember-bright);
+    margin-bottom: 0.8rem;
+  }
+
+  .trilogy-heading {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+    margin: 0 0 3.5rem;
+    color: var(--gold-bright);
+  }
+
+  .poem {
+    margin-bottom: 4.5rem;
+  }
+
+  .poem:last-child { margin-bottom: 0; }
+
+  .poem-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--cream-dim);
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .poem-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    color: var(--cream);
+    margin: 0.3rem 0 1.6rem;
+    border-left: 3px solid var(--ember);
+    padding-left: 0.9rem;
+  }
+
+  .poem-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.28rem;
+    font-weight: 500;
+    color: var(--cream);
+    margin-left: 1in;
+  }
+
+  .stanza {
+    white-space: pre-line;
+    margin: 0 0 1.6em;
+  }
+
+  .stanza:last-child {
+    margin-bottom: 0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 4rem 1.5rem 5rem;
+    color: var(--cream-dim);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+
+  footer .name {
+    font-family: 'Alex Brush', cursive;
+    color: var(--gold-bright);
+    font-size: 3.2rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-verse {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--cream-dim);
+    max-width: 480px;
+    margin: 1.4rem auto 2.4rem;
+    line-height: 1.6;
+  }
+
+  .footer-quotes {
+    max-width: 540px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .footer-quotes .lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--cream);
+    margin: 0 0 1.4rem;
+    line-height: 1.6;
+  }
+
+  .footer-quotes ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-quotes li {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--cream-dim);
+    margin-bottom: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .footer-quotes li:last-child { margin-bottom: 0; }
+
+  @media (max-width: 600px) {
+    section, nav.toc { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .poem-body { font-size: 1.15rem; margin-left: 0.4in; }
+  }
+
+  .theme-switcher {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 10;
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.6rem;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+
+  .theme-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .theme-dot:hover { transform: scale(1.12); }
+
+  .theme-dot.active {
+    border-color: var(--cream);
+    transform: scale(1.12);
+  }
+
+  .theme-dot[data-t="ember"]     { background: linear-gradient(135deg, #eec078, #14110d); }
+  .theme-dot[data-t="jade"]      { background: linear-gradient(135deg, #BAC8B1, #404E3B); }
+
+  .theme-label {
+    position: fixed;
+    top: 1.2rem;
+    right: 6.5rem;
+    z-index: 10;
+    font-family: 'Lora', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    align-self: center;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 600px) {
+    .theme-label { display: none; }
+    .theme-switcher { top: 0.8rem; right: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="theme-label">Theme</div>
+<div class="theme-switcher" role="group" aria-label="Color theme switcher">
+  <button class="theme-dot" data-t="ember" title="Original — gold &amp; ember" aria-label="Original gold and ember theme"></button>
+  <button class="theme-dot" data-t="jade" title="Jade Pebble Morning" aria-label="Jade Pebble Morning theme"></button>
+</div>
+<div class="wrap">
+
+  <header class="hero">
+    <svg class="spark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="spark-flame" d="M12 2C12 2 8 8 8 12.5C8 15.5 9.8 18 12 18C14.2 18 16 15.5 16 12.5C16 8 12 2 12 2Z" stroke-width="1.2"/>
+      <path class="spark-base" d="M12 18C12 18 9 20 9 21.5" stroke-width="1.2" stroke-linecap="round"/>
+      <path class="spark-base" d="M12 18C12 18 15 20 15 21.5" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    <h1 class="title">Proof I Made It Through</h1>
+    <p class="subtitle">the girl who would not shrink</p>
+    <div class="byline">
+      <p class="byline-label">poems by</p>
+      <p class="byline-name">Trinity Renee Gibbs</p>
+    </div>
+    <div class="scroll-hint">scroll ↓</div>
+  </header>
+
+  <section class="bio">
+    <h2 class="section-label">About the Author</h2>
+    <div class="bio">
+      <p>Trinity Renee Gibbs, who goes by Renee, is a fourteen year old poet and student at West Ashley High School. She writes both rhyming and free verse poetry, drawing on a childhood that was not always easy, one that held real hardship, real fear, and real loss, and turning that material into work that insists on hope, wit, and self-reclamation rather than despair. These four trilogies trace that journey: learning to take up space after being underestimated, finding composure and humor in the face of betrayal, reclaiming the frightened child she once was, and finally speaking as a witness to everything she has seen and survived. Renee reads mostly thriller and mystery, listens to R&amp;B, hip hop, rap, soul, and blues, and one day hopes to publish a full poetry collection. This page is the beginning of that dream. And she thanks those who read, for supporting it.</p>
+    </div>
+  </section>
+
+  <nav class="toc">
+    <h2 class="section-label">Contents</h2>
+    <ol>
+      <li>
+        <a href="#trilogy-1">
+          <span class="num">I.</span>
+          <span>
+            <span class="toc-title">Blueprint of an Underdog</span>
+            <span class="toc-sub">Blueprint of an Underdog · When the Room Went Cold · From Shadows to Solitude</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#trilogy-2">
+          <span class="num">II.</span>
+          <span>
+            <span class="toc-title">Canceling the Season</span>
+            <span class="toc-sub">Canceling the Season · The Waitlist · The Carbon Copy</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#trilogy-3">
+          <span class="num">III.</span>
+          <span>
+            <span class="toc-title">Splitting the Spine</span>
+            <span class="toc-sub">Splitting the Spine · The Greenhouse of Expectations · A Lease on Silence: Timber and Stone</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="#trilogy-4">
+          <span class="num">IV.</span>
+          <span>
+            <span class="toc-title">The Diary of a Black Girl</span>
+            <span class="toc-sub">What She Sees · What She Hides · What She Speaks</span>
+          </span>
+        </a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- TRILOGY 1 -->
+  <section class="trilogy" id="trilogy-1">
+    <div class="trilogy-kicker">Trilogy I</div>
+    <h2 class="trilogy-heading">Blueprint of an Underdog</h2>
+
+    <div class="poem">
+      <div class="poem-number">1.</div>
+      <h3 class="poem-title">Blueprint of an Underdog</h3>
+      <div class="poem-body">
+      <p class="stanza">Of all the children in my school, I may not be the strongest,
+Of all the voices in the world, my silence lasts the longest.
+Yet hidden deep within my chest, a fire starts to grow,
+With secrets and melodies the world has yet to know</p>
+      <p class="stanza">For still my dreams can lead the way, beyond the walls I see.
+With hope and courage by my side, i trust in who i'll be
+So do not be quick to turn a blind eye
+Im gathering the strength it takes to spread my wings and fly</p>
+      <p class="stanza">You only see a quiet face because I've just begun
+But every underdog will have their moment in the sun
+No longer hidden by the shadows of a heavy past
+I'm stepping forward into a light that's always built to last</p>
+      <p class="stanza">I am like the sun because i shine so bright
+Everywhere i go i emit all different types of light
+A golden horizon that cannot be bound
+Leaving a trail of hope on the ground</p>
+      <p class="stanza">With every step i take the world is spun
+They watch in awe at what i have become
+So underestimate me if you dare
+Im taking up my space, im standing there</p>
+      <p class="stanza">You tried to mute my voice and lock the gate
+But you could never seal away my fate
+You tried to box me in and build a cage
+But now i rise and turn a new page</p>
+      <p class="stanza">Im rewriting the plot, im changing my pace
+Yeah you've just started but im winning this race
+I lock onto targets, my vision is clear
+I banish the doubt and conquer every fear</p>
+      <p class="stanza">I aim my potential like a loaded gun
+No obstacle exists that i will shun
+I shatter the boundaries to make them all see
+And strike like a lightning bolt, wild and free</p>
+      <p class="stanza">To claim every triumph i've chased for many a year
+I stand in the light where the truth is sharp and near
+Look close at my face, because my moment is finally here
+The critics can whisper but i refuse to disappear</p>
+      <p class="stanza">The shackles are broken, the damage undone
+I step into a future where no shadows can reappear
+My journey continues beneath a permanent sun
+The story is mine and the victory is clear</p>
+    </div>
+    </div>
+
+    <div class="poem">
+      <div class="poem-number">2.</div>
+      <h3 class="poem-title">When the Room Went Cold</h3>
+      <div class="poem-body">
+      <p class="stanza">Loss after loss, I have lost so many
+Loss after loss feels like plenty
+They packed up their promises and walked out the door
+Leaving me counting the cracks on the floor</p>
+      <p class="stanza">I watched the tail lights fade into the gray
+Wondering why nobody ever chooses to stay
+The silent state left is a heavy cold room
+A graveyard of friendships that died in the bloom</p>
+      <p class="stanza">I sat with my shadow deleting the names
+Tired of playing their disposable games
+You think that you are valued you think that you matter
+Then you watch as the mirrors and promises shatter</p>
+      <p class="stanza">But just when the gravity started to pull
+You stepped in the wreckage and made the room full
+You looked past the armor and noticed my pain
+And stood right beside me to block out the rain</p>
+      <p class="stanza">For the first time in forever I'm lifted off my feet
+Finally visible finally complete
+I'm sweeping the ashes left behind
+Reclaiming the pieces you thought I wouldn't find</p>
+      <p class="stanza">They wanted me broken they wanted me small
+But you gave me a shoulder to climb over the wall
+The doorways are open the darkness is gone
+I'm no longer waiting for a fictional dawn</p>
+      <p class="stanza">Surrounded by people who choose to remain
+I rise from the valley I stepped through the pain
+The losses are numbers I no longer count
+I am no longer lonely I'm finally found</p>
+    </div>
+    </div>
+
+    <div class="poem">
+      <div class="poem-number">3.</div>
+      <h3 class="poem-title">From Shadows to Solitude</h3>
+      <div class="poem-body">
+      <p class="stanza">I built a fortress out of quiet spaces
+Far from the noise of the competing faces
+Inside my chest a sudden stillness grew
+A private shelter that they never knew</p>
+      <p class="stanza">I light a candle where the wind once blew
+And cultivate a peace that feels brand new
+I look back at the roots that bruised my feet,
+Not with regret but knowing I'm complete</p>
+      <p class="stanza">The people who walked out or threw their stones
+Are just ghost in the past that no one owns
+I hold no anger for the things they said
+I simply chose to clear the path ahead</p>
+      <p class="stanza">The warmth of honest praise will always help my spirit grow
+It guides my feet along the path and sets heart aglow
+I shift the rooms energy and elevate their view
+To leave a proud impression on the lives I'm passing through</p>
+      <p class="stanza">But when I step inside my room and shut the heavy door
+I know my own internal peace is worth so much more
+I forgive the versions of me that didn't know
+How to protect my heart or let things go</p>
+      <p class="stanza">The times I stayed when I should have walked away
+All the silent words I didn't say
+The past is a teacher not a cage
+And i am finally wise enough to turn the page</p>
+      <p class="stanza">I tell the child inside me they are safe tonight
+No longer needing to prepare for flight or fight
+The Schoolyard whispers can no longer reach
+The sacred wisdom that the Silence has to teach</p>
+      <p class="stanza">I wrap my younger self in a steady grace
+And tell them they belong in every single space
+The storm has cleared the air is clean and still
+No heavy clouds hangover on the hill</p>
+      <p class="stanza">I sit in silence with a cup of tea
+Content with who is sitting here with me
+The ticking clock no longer feels like dread
+Just a steady rhythm for the days ahead</p>
+      <p class="stanza">I traced the morning sunlight on the floor
+And realize I don't need a miracle or more
+The sound of rain against the window pane
+Is proof that life washes away the stain</p>
+      <p class="stanza">I find a hidden wealth in being still
+A joy that money never will
+My energy is precious and my time is gold
+A beautiful story waiting to unfold</p>
+      <p class="stanza">I hold my ground with courage as my shield
+Standing firmly in the open field
+I pull the weeds of doubt out by the root
+And plant the seeds of better fruit</p>
+      <p class="stanza">I water thoughts of confidence and pride
+And let the flower open up inside
+The landscape of my soul is green and bright
+A peaceful garden growing in the light</p>
+      <p class="stanza">They thought that leaving me would make me weak
+And leave me in a valley dark and bleak
+But isolation was a hidden door
+That taught me who I was and so much more</p>
+      <p class="stanza">The quiet didn't break me,it restored my soul
+And took the broken pieces making them whole
+I give myself the grace i used to hide
+And stand as my own guardian and guide</p>
+      <p class="stanza">I heal the wounds of who i used to be
+And fall in love with my own company
+I am the author and the pages mend
+My own best protector and my own best friend</p>
+      <p class="stanza">Hand in hand with who i am today
+I step into the future, so come what may</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- TRILOGY 2 -->
+  <section class="trilogy" id="trilogy-2">
+    <div class="trilogy-kicker">Trilogy II</div>
+    <h2 class="trilogy-heading">Canceling the Season</h2>
+
+    <div class="poem">
+      <div class="poem-number">1.</div>
+      <h3 class="poem-title">Canceling the Season</h3>
+      <div class="poem-body">
+      <p class="stanza">They say hell is hot and they're probably right
+A burning heavy fever in the middle of the night
+But i have felt a colder fire freezing in my chest
+The sting of your betrayal was a different kind of test</p>
+      <p class="stanza">The flames can scorch the surface, but ice will lock the gate
+You left me out in the winter just to calculate my fate
+So let the furnace roar away, im adapting to the chill,
+You couldn't break my spirit then and you never will</p>
+      <p class="stanza">I must admit your grand betrayal had a bit of style
+It almost made me drop my jaw and miss a smile
+You thought you blew my world apart and left me in the dust
+But you just gave my schedule a much - needed adjust</p>
+      <p class="stanza">I appreciate the drama and the theater that you brought
+But you are simply not as clever as you originally thought
+I gave your little exit scene a solid four out of ten
+The acting was a bit dramatic, please don't try again</p>
+      <p class="stanza">You slammed the door so heavily to make a massive point
+But you just highlighted the flaws of this entire joint
+I hope you enjoyed the audience you gathered for the show
+Because im canceling the season, darling its time for you to go</p>
+      <p class="stanza">You thought your absence left a crater gaping in the floor
+Like id be weeping every evening right beside the door
+But honestly , the quiet room is such a sweet relief
+I didn't even have time to cultivate a grief</p>
+      <p class="stanza">The space you left is perfect for a brand new coffee table
+It turns out holding up your ego made me unstable
+So bless your heart for trying to freeze me in my place
+Im sitting here with perfect warmth and laughing in your face</p>
+      <p class="stanza">The winter that you left me in was just a passing breeze
+It takes a lot more force than yours to make a giant freeze
+Go tell the world you broke my heart and make your story grand
+While i enjoy the absolute best summer in the land</p>
+      <p class="stanza">I should probably send a bill for all the time i spent
+Listening to your complaints acting like they meant
+A single shred of anything to anyone but you-
+I guess i should thank you for the clarity i grew</p>
+      <p class="stanza">You thought you were the main event, the highlight of the night
+But you were just the opening act that wasn't very bright
+I looked around for all the damage you said you'd leave
+I even brought some tissues just in case i had to grieve</p>
+      <p class="stanza">But i checked the mirror carefully and everything is fine
+In fact my skin is glowing and ive never looked so divine
+Im sorry that your catastrophe fell totally flat
+But I've got better things to do than argue about that</p>
+      <p class="stanza">You went around and told the town that you're the one who won
+Like you're the gravity that holds the Earth around the sun
+But your just a background character who stepped over their line
+A temporary shadow on a diamond built to shine</p>
+      <p class="stanza">I change the locks, changed my number, changed the whole design
+And looking back the best part of my life was when you left the line
+So keep on whispering my name to anyone who'll hear
+Im living completely rent -free in your head throughout the year</p>
+      <p class="stanza">You tried to make a tragedy but made a comedy instead
+You thought you left me broken, but your ego was misled
+I'd wish you well but honestly I don't care where you go
+Thanks for the free entertainment, i think i'll end the show</p>
+    </div>
+    </div>
+
+    <div class="poem">
+      <div class="poem-number">2.</div>
+      <h3 class="poem-title">The Waitlist</h3>
+      <div class="poem-body">
+      <p class="stanza">You treated me like backup; an option on the shelf
+While you were busy chasing after everyone but myself
+But now your plans have fallen flat and things are looking gray
+And suddenly you're memory-laneing back into my day</p>
+      <p class="stanza">I love how our convenience makes you suddenly remember
+The person that you had frozen way back in December
+You expect a grand reception, and an open smiling face
+Like i've been sitting waiting for you to re-enter the space</p>
+      <p class="stanza">Im sorry to inform you that the waitlist has been closed
+The vacancy you thought you had has been fully exposed
+I filled the space with better things, with progress and pride
+And didn't leave a single chair for you to sit inside</p>
+      <p class="stanza">Go take your sudden loneliness to someone who will care
+Because my empathy for you is running thin and bare
+It must be deeply shocking when the tables turn
+And you become the afterthought you wanted me to learn</p>
+      <p class="stanza">So bless your heart for knocking on a door made of stone
+Im far too busy thriving to answer on the phone
+I hope you enjoy the quiet of the bridge that you burned
+Consider this a master class in lessons highly learned</p>
+    </div>
+    </div>
+
+    <div class="poem">
+      <div class="poem-number">3.</div>
+      <h3 class="poem-title">The Carbon Copy</h3>
+      <div class="poem-body">
+      <p class="stanza">You roll your eyes publicly at what i display
+Then secretly imitate me the very next day
+You claim that my style is a bit overdone
+Then run to the mirror to copy line one</p>
+      <p class="stanza">It must be exhausting to play the harsh judge
+While holding a deeply unoriginal grudge
+You trash my ideas then make them your own
+But a thief is just empty when left all alone</p>
+      <p class="stanza">You sit in the corner and study my pace
+Convinced you can enter and win my race
+You repeat all the phrases and steps that i take
+But you're just a cheap and hollow remake</p>
+      <p class="stanza">A shadow can never outshine the frame
+So changing your posture won't alter your name
+Im driving the engine your stuck in the back
+Like cheap imitation cargo derailed on the track</p>
+      <p class="stanza">I am the designer the premium brand
+The highest quality goods in the land
+Your strictly the replica priced in the bin
+A plastic duplicate that's way too thin</p>
+      <p class="stanza">I come with a lifetime guarantee of success
+You come with a glitch and a whole lot of stress
+Your a dollar store copy, you need to confess
+Im a luxury standard you cannot possess</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- TRILOGY 3 -->
+  <section class="trilogy" id="trilogy-3">
+    <div class="trilogy-kicker">Trilogy III</div>
+    <h2 class="trilogy-heading">Splitting the Spine</h2>
+
+    <div class="poem">
+      <div class="poem-number">1.</div>
+      <h3 class="poem-title">Splitting the Spine</h3>
+      <div class="poem-body">
+      <p class="stanza">At midnight i enter the gates of my mind
+To look for the pieces i left behind
+The clock strikes the hour, the world goes to sleep
+While i tend to the secrets i promise to keep</p>
+      <p class="stanza">The roses have thorns as sharp as knives
+Each flower a memory carved by my life
+I walk through the midnight where yesterday grows
+And speak to the ghost that only my soul knows</p>
+      <p class="stanza">I walk down a path overgrown by the years
+And find a small child who is drowning in fears
+They tremble in silence, too fragile to speak
+A ghost of compliance submissive and meek</p>
+      <p class="stanza">They shrink from the world and pull down their head
+And swallow the words they wished they had said
+They sit in the corner with nowhere to run
+Defenseless and silent, out matched and outdone</p>
+      <p class="stanza">They let people push them and take up their space
+Too scared of the conflict to look in their face
+They traded their boundaries just to keep the peace
+And waited for pressures that never would cease</p>
+      <p class="stanza">A silent bystander to their own defeat
+Retreating in shadows to clear out the street
+They let others dictate the path and clear the track
+With no solid courage to never push back</p>
+    </div>
+    </div>
+
+    <div class="poem">
+      <div class="poem-number">2.</div>
+      <h3 class="poem-title">The Greenhouse of Expectations</h3>
+      <div class="poem-body">
+      <p class="stanza">I walk through a dome made of iron and glass
+Where shadows of cages are cast on the grass
+The air is suffocating, artificial and tight
+A trap disguised to modify my light</p>
+      <p class="stanza">Inside they have planted a million constraints
+A garden of rules and historical complaints
+They tell me exactly the way i should grow
+How high i can reach and how much i can know</p>
+      <p class="stanza">They clip at my leaves if i branch out too far
+And try to convince me to hide away my scar
+They want a neat flower to place on display
+But i am a wildfire they cannot convey</p>
+      <p class="stanza">I look at the glass that is shielding the lie
+A barrier built just to limit the sky
+Im tired of breathing their temperature rules
+And playing in the garden of fools</p>
+      <p class="stanza">The roots that they wanted to stifle and bind
+Are breaking the floorboards they left me behind
+I gather my strength and i stand up so tall
+And throw a heavy stone at the perimeter wall</p>
+      <p class="stanza">The iron begins to fracture and shake
+As all the glass expectations start to break
+A brilliant explosion of shards in the night
+As i reclaim the space for my natural light</p>
+      <p class="stanza">I step through the wreckage and breathe in the cold
+No longer a product bought or sold
+The wilderness inside me is ready to run
+No longer a flower afraid of the sun</p>
+      <p class="stanza">Let the glass fall and shatter where it may
+Im growing completely wild today</p>
+    </div>
+    </div>
+
+    <div class="poem">
+      <div class="poem-number">3.</div>
+      <h3 class="poem-title">A Lease on Silence: Timber and Stone</h3>
+      <div class="poem-body">
+      <p class="stanza">They tailored their smile just to soften the room
+Apologizing for taking up space in the gloom
+Caring the weight of what everyone thought
+And paid for a peace that could never be bought</p>
+      <p class="stanza">Thinking that they blended right into the wall
+They'd escape from the pressure of taking the fall
+Their voice was a whisper that choked in their throat
+A passenger trapped on a rudderless boat</p>
+      <p class="stanza">Watching as others dictated the game
+They nod in agreement while swallowing shame
+Its heavy to look at the kid i once was
+Who gave up their power without a just cause</p>
+      <p class="stanza">But here in the midnight, beneath the dim light
+I see how those roots were preparing to fight
+The grass that was bending began to take hold
+Deep down in the dirt where the weather was cold</p>
+      <p class="stanza">Trembling in fear, the spineless seedling stood near
+Quietly waiting for me to appear
+I reach through the shadows and take by the hand
+The child who felt like they never could stand</p>
+      <p class="stanza">I plant their feet upon a mountain of stone
+And tell them they will never be alone
+I give them the spine that was stolen away
+To stand like a giant and face down the day</p>
+      <p class="stanza">I weave every boundary i've recently built
+Deep into their posture to banish the guilt
+I tell them it's okay to push back the crowd
+To take up their space and to speak out loud</p>
+      <p class="stanza">At last the leg they were missing is found
+Cemented in courage and locking the ground
+The moment I touch them the garden transforms
+Roses stop bleeding and weather the storms</p>
+      <p class="stanza">The weeds of compliance are pulled by the root
+And vines of authority offer new fruit
+Free from their fear they look in my eyes
+And see the bright future they're destined to rise</p>
+      <p class="stanza">Back to the wreckage they run for the frame
+And try to contain me by shouting my name
+But you cannot cage what is meant to be wild
+The rules of the greenhouse are no longer filed</p>
+      <p class="stanza">My branches are reaching my leaves are untamed
+A beautiful force that can never be shamed
+I laugh at the climate they thought they could control
+While I was busy reconstructing my soul</p>
+      <p class="stanza">They wanted a specimen neat and polite
+But I'm a forest that swallows the night
+The artificial weather they manufactured to please
+Is blown far away by a natural breeze</p>
+      <p class="stanza">I look at the iron now twisted and bend
+The lease on my silence has officially spent
+Rooted in freedom im standing up tall
+Outside the constraints of the perimeter wall</p>
+      <p class="stanza">The sky is wide open the horizon is clear
+Im blooming completely without any fear
+Together we walk back to face down the night
+No longer two pieces but one single light</p>
+      <p class="stanza">The kid with no backbone is shielding my chest
+A permanent proof that i passed the test
+The clock strikes the ending,the shadows depart
+I have grown a whole forest inside of my heart</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- TRILOGY 4 -->
+  <section class="trilogy" id="trilogy-4">
+    <div class="trilogy-kicker">Trilogy IV</div>
+    <h2 class="trilogy-heading">The Diary of a Black Girl</h2>
+
+    <div class="poem">
+      <div class="poem-number">1.</div>
+      <h3 class="poem-title">The Diary of a Black Girl; What She Sees, What She Knows Better</h3>
+      <div class="poem-body">
+      <p class="stanza">Everyday life Alters its face
+But the Casual tie stay frozen in the same exact place
+She walks past the bodies heavily sedated by grief
+Wondering what thief promise them this brief relief</p>
+      <p class="stanza">They call it a temporary exit short-lived Escape
+But she has seen the ink stain the irreversible shape
+Once the needle for the Habit writes itself into your frame
+There is no eraser you are never the same</p>
+      <p class="stanza">They think she is too young to the decode the damage on the street
+Assuming her eyes just watch the rhythm of her feet
+But she carries an older calculus deep inside her spine
+She knows better than to step across that blurred and broken line</p>
+      <p class="stanza">They drink a liquid promise to just to make the memories fade
+But she has seen the heavy price of every choice they've made
+So she presses ink to paper while the sirens softly scream
+Writing down the waking truth to save her own tomorrow's dream</p>
+      <p class="stanza">No potion or poison will ever dictate her worth
+She will not bury her magic in the concrete of this Earth
+Let the world stay blinded by the smoke and gasoline
+She is the author of the future keeping her vision clean</p>
+      <p class="stanza">She will lock her crown in place far above the city grime
+Pulling light from the dark surviving one page at a time
+Because she knows her story is a mountain they can never climb</p>
+    </div>
+    </div>
+
+    <div class="poem">
+      <div class="poem-number">2.</div>
+      <h3 class="poem-title">The Mirror of a Black Girl; What She Hides, What She Heals Through</h3>
+      <div class="poem-body">
+      <p class="stanza">She bolts the bathroom door to strip the armor from her frame
+And stares into a silver lens that calls her by her name
+Behind the steady mask she wears to navigate the crowd
+Lies a suffocating quiet that is getting far too loud</p>
+      <p class="stanza">She traps the bitter saltwater before it hits her cheek
+Anchoring the trembling wrists the world assumes are weak
+They demand a flawless fortress when they look into her eyes
+But the glass detects the baseline where the heavy shadow lies</p>
+      <p class="stanza">Yet mending is a battlefield a slow and patient art
+Of gathering the broken flint to spark a frozen heart
+She traces her reflection where the frost begins to clear
+Breathing life back into spaces that were hollowed out by fear</p>
+      <p class="stanza">With every study exhale she begins to rewrite the rules
+Converting all her history from weight to working tools
+The mirror is no longer a witness to her scars
+It's the midnight laboratory where she counts her internal stars</p>
+      <p class="stanza">The quiet reflection ends, and the anthem now begins</p>
+    </div>
+    </div>
+
+    <div class="poem">
+      <div class="poem-number">3.</div>
+      <h3 class="poem-title">The Anthem of a Black Girl; What She Speaks, What She Holds Sacred</h3>
+      <div class="poem-body">
+      <p class="stanza">No longer hidden by her scars she opens up her eyes
+To see the twinkling stars ignite across the midnight skies
+One by one they wake the dark beginning now to shine
+As she steps into the light and says "I finally see it's mine"</p>
+      <p class="stanza">She strips away the heavy cloak to everyone's design
+Unearthing diamonds in a space they thought was just a mine
+And takes her rightful place along the cosmic borderline
+Her voice becomes a tidal wave a thunder in the room</p>
+      <p class="stanza">Shattering the silence where they thought she'd only bloom
+She speaks a heavy truth that makes old foundations shake
+Reclaiming every promise that they tried so hard to break
+For she has locked away the things she always holds sacred</p>
+      <p class="stanza">A soul untouched by malice and a joy untouched by hatred
+No longer just a witness to the fire and the grime
+She stands a living monument triumphant in her time
+The architecture of her pain is turned to solid gold</p>
+      <p class="stanza">A brand new manifestation of a story yet untold
+With gasoline in glass she built a kingdom from the spark
+Forever burning brilliant as a beacon in the dark</p>
+    </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="name">Trinity Renee Gibbs</div>
+    <p class="footer-verse">&ldquo;The Lord is close to the brokenhearted and saves those who are crushed in spirit.&rdquo;<br>&mdash; Psalm 34:18</p>
+    <div class="footer-quotes">
+      <p class="lead">You&rsquo;ve just experienced the realest real,<br>Your trauma made you stronger? It absolutely did not, it made me funnier though.</p>
+      <ul>
+        <li>&ldquo;I survived the emotional damage of my youth, and all I got was this lousy coping mechanism.&rdquo;</li>
+        <li>&ldquo;I asked my therapist if she could fix my inner child. She said at least the trauma made me funny.&rdquo;</li>
+      </ul>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var dots = document.querySelectorAll('.theme-dot');
+    function setTheme(name) {
+      root.setAttribute('data-theme', name);
+      dots.forEach(function (d) {
+        d.classList.toggle('active', d.getAttribute('data-t') === name);
+      });
+    }
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        setTheme(dot.getAttribute('data-t'));
+      });
+    });
+    setTheme(root.getAttribute('data-theme') || 'ember');
+  })();
+</script>
+</body>
+</html>
