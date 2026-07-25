@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://trinity145123.github.io/sitemap.xml
